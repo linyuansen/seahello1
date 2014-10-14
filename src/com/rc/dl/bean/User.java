@@ -16,6 +16,9 @@ import javax.persistence.Table;
 @Table(name = "T_USER_INFO")
 public class User 
 {
+	public User(){	
+	}
+	
 	@Id 
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
@@ -29,19 +32,19 @@ public class User
 	/**
 	 * 用户名
 	 */
-	@Column(name = "USER_NAME")
+	@Column(name = "username", nullable = false, length = 100)
 	private String userName;
 	/**
 	 * 密码
 	 */
-	@Column(name = "PASSWORD")
+	@Column(name = "password", nullable = true, length = 200)
 	private String password;
 	
 	/**
 	 * 登录密匙
 	 * @return
 	 */
-	@Column(name = "LOGIN_KEY")
+	@Column(name = "loginKey", nullable = true, length = 20)
 	private String key;
 	
 	

@@ -6,7 +6,7 @@
 	<!-- 将ACTION交给SPRING处理 -->
 	<constant name="struts.objectFactory" value="spring"/>
 	<!-- 更改struts2请求ACTION后缀名，默认为action若去掉后缀“，”即可 -->
-	<constant name="struts.action.extension" value=","></constant>
+	<constant name="struts.action.extension" value="action"></constant>
 	<!-- 设置浏览器是否缓存静态内容,默认值为true(生产环境下使用),开发阶段最好关闭 -->
     <constant name="struts.serve.static.browserCache" value="false" />
     <!-- 当struts的配置文件修改后,系统是否自动重新加载该文件,默认值为false(生产环境下使用),开发阶段最好打开 -->
@@ -19,6 +19,8 @@
 	<include file ="/config/struts-user.xml"/>
 	<include file ="/config/struts-register.xml"/>
 	<include file ="/config/struts-locationUrl.xml"/>
+	<include file ="/config/struts-fitem.xml" />
+	<include file ="/config/struts-post.xml" />
 	<!-- 测试用的Action -->
     <include file ="/config/struts-test.xml"/>
     <!-- 测试用的Action -->

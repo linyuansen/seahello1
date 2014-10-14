@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="fitem" extends="struts-default" namespace="/fitem">
+		<action name="saveOrUpdateFItem" class="com.rc.dl.action.FItemAction" method="saveOrUpdate">	
+			<result name="success" type="redirect">/fitem/listFItem.action</result>		
+			<result name="input">/fitem/updateFItem.jsp</result>
+		</action>
+
+		<action name="listFItem" class="com.rc.dl.action.FItemAction" method="list">
+			<result name="success">/fitem/listFItem.jsp</result>
+		</action>
+
+		<action name="deleteFItem" class="com.rc.dl.action.FItemAction" method="delete">
+			<result name="success" type="redirect">fitem/listFItem.action</result>
+		</action>
+		
+		<action name="createFItem">
+			<result>/fitem/createFItem.jsp</result>
+		</action>
+
+		<action name="editFItem" class="com.rc.dl.action.FItemAction" method="edit">
+			<result name="success">/fitem/updateFItem.jsp</result>			
+		</action>
+		<action name="fileUpload" class="com.rc.dl.action.FileUploadAction" >
+			<result name="success">/fitem/fileUpload.jsp</result>			
+		</action>
+		
+		<action name="listFile" class="com.rc.dl.action.FileUploadAction" >
+			<result>/fitem/fileUpload.jsp</result>		
+		</action>
+		
+		<action name="login" method="authenticate"
+			class="com.rc.dl.action.LoginAction">
+			<result name="success">/login/Welcome.jsp</result>
+			<result name="error">/login/Login.jsp</result>
+		</action>
+		<action name="tologin" class="com.rc.dl.action.LoginAction">
+			<result>/login/Login.jsp</result>
+		</action>
+		
+		<action name="genereteExcel" class="genereteExcelAction">
+			<result type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">filename="AllUsers.xls"</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+		</action>
+
+
+	</package>
+</struts>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="post" extends="struts-default" namespace="/post">
+	
+		<action name="create" class="com.rc.dl.action.PostAction" method="create">	
+			<result name="success" type="redirect">/post/list.action</result>		
+			<result name="input">/admin/post.jsp</result>
+		</action>
+		
+		<action name="update" class="com.rc.dl.action.PostAction" method="update">	
+			<result name="success" type="redirect">/post/list.action</result>		
+			<result name="input">/admin/post.jsp</result>
+		</action>
+
+		<action name="list" class="com.rc.dl.action.PostAction" method="list">
+			<result name="success">/admin/post.jsp</result>
+		</action>
+
+		<action name="delete" class="com.rc.dl.action.PostAction" method="delete">
+			<result name="success" type="redirect">post/list.action</result>
+		</action>
+		
+
+		<action name="edit" class="com.rc.dl.action.PostAction" method="edit">
+			<result name="success">/admin/updatePost.jsp</result>			
+		</action>
+		
+		
+		
+	
+
+
+	</package>
+</struts>

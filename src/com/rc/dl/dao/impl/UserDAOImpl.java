@@ -8,6 +8,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import com.rc.dl.bean.FItem;
 import com.rc.dl.bean.User;
 import com.rc.dl.common.Constant;
 import com.rc.dl.dao.IUserDao;
@@ -40,7 +41,6 @@ public class UserDAOImpl implements IUserDao
 		
 		if(null!=list && list.size()>0)
 		{
-			
 			return true;
 		}
 		else
@@ -85,6 +85,34 @@ public class UserDAOImpl implements IUserDao
 		Query query = getSession().createQuery(hql);
 		query.setString(0, userName);
 		@SuppressWarnings("unchecked")
+		List<User> list = query.list();
+		return list.get(Constant.FRIST_ELEMENT);
+	}
+
+	@Override
+	public int doCreate(User user) {
+		Integer id = null;
+		id = (Integer)getSession().save(user);
+		return id;
+	}
+
+	@Override
+	public void doUpdate(User user) {
+		getSession().update(user);	
+	}
+
+	@Override
+	public void doDelete(User user) {
+		getSession().delete(user);
+		
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public User findById(int id) {
+		String hql = "from User t where t.id = ? ";
+		Query query = getSession().createQuery(hql);
+		query.setParameter(0, id);
 		List<User> list = query.list();
 		return list.get(Constant.FRIST_ELEMENT);
 	}

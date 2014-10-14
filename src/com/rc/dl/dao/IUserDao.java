@@ -30,4 +30,9 @@ public interface IUserDao
 	 */
 	public User findByUserName(String userName);
 	
+	public int doCreate(User user);
+	public void doUpdate(User user);
+	public void doDelete(User user);
+	public User findById(int id);
+	
 }
