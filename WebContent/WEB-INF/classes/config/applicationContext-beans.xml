@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 登录  -->
+	<bean name ="user" class="com.rc.dl.bean.User" ></bean>
+	<!-- Dao  -->
+	<bean name ="userDao" class="com.rc.dl.dao.impl.UserDAOImpl" >
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- Service -->
+	<bean name ="userService" class="com.rc.dl.service.impl.UserServiceImpl" >
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+	<!-- Action -->
+	<bean name="loginAction" class="com.rc.dl.action.UserAction"></bean>
+	<bean name="testAction" class="com.rc.dl.action.TestAction"></bean>
+	<!-- 登录  -->
+	
+	<!-- 注册  -->
+	<bean name ="register" class="com.rc.dl.bean.Register" ></bean>
+	<!-- Dao  -->
+	<bean name ="registerDao" class="com.rc.dl.dao.impl.RegisterDAOImpl" >
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- Service -->
+	<bean name ="RegisterService" class="com.rc.dl.service.impl.RegisterServiceImpl" >
+		<property name="registerDao" ref="registerDao"></property>
+	</bean>
+	<!-- Action -->
+	<bean name="registerAction" class="com.rc.dl.action.RegisterAction">
+	<property name="RegisterService" ref="RegisterService"></property>
+	</bean>
+	<!-- 注册 -->
+	
+	<!-- 发单管理  -->
+	<bean name ="order" class="com.rc.dl.bean.Order" ></bean>
+	<!-- Dao  -->
+	<bean name ="sendManageDao" class="com.rc.dl.dao.impl.SendManageDaoImpl" >
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- Service -->
+	<bean name ="sendManageService" class="com.rc.dl.service.impl.SendManageServiceImpl" >
+		<property name="sendManageDao" ref="sendManageDao"></property>
+	</bean>
+	<!-- Action -->
+	<bean name="locationUrlAction" class="com.rc.dl.action.LocationUrlAction"></bean>
+	<!-- 发单管理  -->
+
+</beans>

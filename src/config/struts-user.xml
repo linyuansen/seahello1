@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	<struts>
+		<package name ="user"  extends="rc_default" >
+			<action name="login" class="loginAction" method="login">
+   				<result name="success">/WEB-INF/page/main.jsp</result>
+   				<result name="fail"></result>
+  			</action>
+  			<action name="checkUser" class="loginAction" method="checkUser">
+   				<result name="success" type="json" >
+   					<param name="includeProperties">jsonString</param>                
+   					<param name="excludeProperties"></param>
+   				</result>
+  			</action>
+  		</package>	
+	</struts>
